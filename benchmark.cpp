@@ -23,8 +23,8 @@ extern void my_dgemv(int, double*, double*, double *);
 extern const char* dgemv_desc;
 
 void reference_dgemv(int n, double* A, double* x, double *y) {
-   double alpha=1.0, beta=1.0;
-   int lda=n, incx=1, incy=1;
+    double alpha=1.0, beta=1.0;
+    int lda=n, incx=1, incy=1;
     // cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, n, n, n, alpha, A, n, B, n, 1., C, n);
     cblas_dgemv(CblasRowMajor, CblasNoTrans, n, n, alpha, A, lda, x, incx, beta, y, incy);
 }
@@ -39,19 +39,19 @@ void fill(double* p, int n) {
 
 bool check_accuracy(double *A, double *Anot, int nvalues)
 {
-  double eps = 1e-5;
-  for (size_t i = 0; i < nvalues; i++) 
-  {
-    if (fabsf(A[i] - Anot[i]) > eps) {
-       return false;
+    double eps = 1e-5;
+    for (size_t i = 0; i < nvalues; i++)
+    {
+        if (fabsf(A[i] - Anot[i]) > eps) {
+            return false;
+        }
     }
-  }
-  return true;
+    return true;
 }
 
 
 /* The benchmarking program */
-int main(int argc, char** argv) 
+int main(int argc, char** argv)
 {
     std::cout << "Description:\t" << dgemv_desc << std::endl << std::endl;
 
@@ -77,9 +77,9 @@ int main(int argc, char** argv)
     double* Y = Xcopy + max_size;
     double* Ycopy = Y + max_size;
 
-           // load up matrics with some random numbers
+    // load up matrics with some random numbers
     /* For each test size */
-    for (int n : test_sizes) 
+    for (int n : test_sizes)
     {
         printf("Working on problem size N=%d \n", n);
 
@@ -93,11 +93,15 @@ int main(int argc, char** argv)
         memcpy((void *)Ycopy, (const void *)Y, sizeof(double)*n);
 
         // insert start timer code here
+        auto start = std::chrono::high_resolution_clock::now();
 
         // call the method to do the work
-        my_dgemv(n, A, X, Y); 
+        my_dgemv(n, A, X, Y);
 
         // insert end timer code here, and print out the elapsed time for this problem size
+        auto end = std::chrono::high_resolution_clock::now();
+        auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+        std::cout << "Elapsed time: " << elapsed << " microseconds" << std::endl;
 
 
         // now invoke the cblas method to compute the matrix-vector multiplye
@@ -105,8 +109,8 @@ int main(int argc, char** argv)
 
         // compare your result with that computed by BLAS
         if (check_accuracy(Ycopy, Y, n) == false)
-           printf(" Error: your answer is not the same as that computed by BLAS. \n");
-    
+            printf(" Error: your answer is not the same as that computed by BLAS. \n");
+
     } // end loop over problem sizes
 
     return 0;
