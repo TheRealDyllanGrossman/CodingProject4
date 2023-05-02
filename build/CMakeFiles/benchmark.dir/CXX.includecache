@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/global/homes/d/dyllan/CodingProject4/benchmark.cpp
+algorithm
+-
+chrono
+-
+iomanip
+-
+iostream
+-
+random
+-
+vector
+-
+cmath
+-
+cblas.h
+-
+string.h
+-
+

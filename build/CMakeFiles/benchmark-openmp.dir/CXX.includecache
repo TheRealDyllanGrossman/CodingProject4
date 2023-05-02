@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/global/homes/d/dyllan/CodingProject4/dgemv-openmp.cpp
+string.h
+-
+stdlib.h
+-
+stdio.h
+-
+omp.h
+-
+

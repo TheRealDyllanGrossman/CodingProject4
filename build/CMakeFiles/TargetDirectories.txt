@@ -1,0 +1,7 @@
+/global/homes/d/dyllan/CodingProject4/build/CMakeFiles/rebuild_cache.dir
+/global/homes/d/dyllan/CodingProject4/build/CMakeFiles/benchmark-openmp.dir
+/global/homes/d/dyllan/CodingProject4/build/CMakeFiles/benchmark-blas.dir
+/global/homes/d/dyllan/CodingProject4/build/CMakeFiles/edit_cache.dir
+/global/homes/d/dyllan/CodingProject4/build/CMakeFiles/benchmark-vectorized.dir
+/global/homes/d/dyllan/CodingProject4/build/CMakeFiles/benchmark-basic.dir
+/global/homes/d/dyllan/CodingProject4/build/CMakeFiles/benchmark.dir
